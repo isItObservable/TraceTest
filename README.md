@@ -263,3 +263,19 @@ Create a new Test case , and run a test against :
 - http get http://online.$IP.nip.io/cart
 <p align="center"><img src="/image/tracetest_example.png" width="40%" alt="TraceTest example" /></p>
 
+### 9. Run A test using the CLI
+#### 1.Install the CLI
+```
+curl -L https://raw.githubusercontent.com/kubeshop/tracetest/main/install-cli.sh | sh
+```
+#### 1.Configure the CLI
+```
+tracetest configure
+```
+define the url to your tracetest server
+#### 2.Run a tracetest using the CLI
+```
+tracetest test run -d tracetest/testdefinition.yaml -w
+```
+
+

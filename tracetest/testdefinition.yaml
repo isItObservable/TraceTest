@@ -1,0 +1,47 @@
+id: c5f135da-f420-40b2-b87a-1346dbb5baf3
+id: c5f135da-f420-40b2-b87a-1346dbb5baf3
+description: http get /cart
+name: hipstershop cart
+specs:
+  - assertions:
+      - tracetest.span.duration <= "425ms"
+    selector: span[tracetest.span.type="rpc" name="hipstershop.ShippingService/GetQuote" rpc.system="grpc" rpc.method="GetQuote" rpc.service="hipstershop.ShippingService"]
+  - assertions:
+      - tracetest.selected_spans.count = 1
+    selector: span[tracetest.span.type="rpc" name="/hipstershop.RecommendationService/ListRecommendations" rpc.system="grpc" rpc.method="ListRecommendations" rpc.service="hipstershop.RecommendationService"]
+  - assertions:
+      - tracetest.response.body contains " <div> <a href="/product/"
+      - tracetest.span.duration <= "546ms"
+    selector: span[tracetest.span.type="http" name="/cart" http.target="/cart" http.method="GET"]
+trigger:
+  grpc:
+    address: ""
+    authentication:
+      apiKey:
+        in: ""
+        key: ""
+        value: ""
+      basic:
+        password: ""
+        user: ""
+      bearer:
+        token: ""
+    method: ""
+    protobufFile: ""
+  httpRequest:
+    authentication:
+      apiKey:
+        in: ""
+        key: ""
+        value: ""
+      basic:
+        password: ""
+        user: ""
+      bearer:
+        token: ""
+    headers:
+      - key: Content-Type
+        value: application/json
+    method: GET
+    url: http://online.IP_TO_REPLACE.nip.io/cart
+  type: http
