@@ -254,7 +254,7 @@ kubectl apply -f kubernetes-manifests/k8s-manifest.yaml -n hipster-shop
 kubectl create ns tracetest
 helm repo add kubeshop https://kubeshop.github.io/helm-charts
 helm repo update
-helm install tracetest kubeshop/tracetest --set telemetry.dataStores.tempo.tempo.endpoint="$TEMPO_SVC.tempo.svc.cluster.local:9095" --set telemetry.exporters.collector.exporter.collector.endpoint="tracetestcollector-collector.default.svc.cluster.local:4317" --set server.telemetry.dataStore="tempo" -n tracetest --set ingress.enabled=true --set ingress.className=nginx --set 'ingress.hosts[0].host=tracetest.$IP.nip.io,ingress.hosts[0].paths[0].path=/,ingress.hosts[0].paths[0].pathType=ImplementationSpecific'
+helm install tracetest kubeshop/tracetest --set telemetry.dataStores.tempo.tempo.endpoint="$TEMPO_SVC.tempo.svc.cluster.local:9095" --set telemetry.exporters.collector.exporter.collector.endpoint="tracetestcollector-collector.default.svc.cluster.local:4317" --set server.telemetry.dataStore="tempo" -n tracetest --set ingress.enabled=true --set ingress.className=nginx --set "ingress.hosts[0].host=tracetest.$IP.nip.io,ingress.hosts[0].paths[0].path=/,ingress.hosts[0].paths[0].pathType=ImplementationSpecific"
 ```
 ### 8. Open TraceTest and create a test case
 Open Trace test http://tracetest.$IP.nip.io
